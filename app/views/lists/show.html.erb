@@ -1,2 +1,8 @@
 <h1>Lists show</h1>
+<%= @list.name %>
+<ul>
+  <% @list.bookmarks.each do |bookmark| %>
+  <li><%= link_to bookmark.movie.title %> - <%= bookmark.comment %></li>
+  <% end %>
+</ul>
 <p>what a nice list</p>
