@@ -1,2 +1,18 @@
 <h1>Bookmarks new</h1>
 <p>It isn't saving to favourites or anything. It's a 'ticket' for marking a movie as part of a list</p>
+
+<%= simple_form_for [@list, @bookmark] do |f| %>
+  <%= f.input :movie_id,
+              as: :select,
+              collection: Movie.all,
+              label_method: :title,
+              value_method: :id,
+              prompt: "Choose a movie" %>
+
+  <!-- 2. The Comment Text Area -->
+  <%= f.input :comment, placeholder: "Why are you adding this movie?" %>
+
+  <%= f.button :submit, "Add Movie", class: "btn btn-primary" %>
+<% end %>
+<p><%= link_to "Return to list", list_path(@list) %></p>
+<p><%= link_to "Return to lists", lists_path %></p>
