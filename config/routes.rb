@@ -16,8 +16,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  root to: 'lists#index'
   resources :lists do
     resources :bookmarks
   end
   delete '/bookmarks/:id', to: 'bookmarks#destroy'
+  post 'save_input', to: 'application#save_input'
 end

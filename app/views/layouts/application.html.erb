@@ -44,9 +44,12 @@
             <%= link_to "Add new list", new_list_path, class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <%= image_tag "https://i0.wp.com/digitalhealthskills.com/wp-content/uploads/2022/11/3da39-no-user-image-icon-27.png?fit=500%2C500&ssl=1", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
+              <%= form_with url: save_input_path, method: :post do |f| %>
+  <%= f.text_field :user_string, placeholder: "Github username" %>
+  <%= f.submit "Login" , class: "dropdown-item" %>
+        <% end %>
               <%= link_to "Another action", "#", class: "dropdown-item" %>
               <%= link_to "Log out", "#", class: "dropdown-item", data: {turbo_method: :delete} %>
               <%# link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
