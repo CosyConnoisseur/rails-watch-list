@@ -1,7 +1,5 @@
-<%       url = "https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=movies"
-      response = Faraday.get(url)
-      data = JSON.parse(response.body) %>
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= data["urls"]["regular"] %>');">
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= @banner %>');">
   <div class="container d-flex flex-column align-items-center justify-content-center">
     <h1>Your Movie Collections</h1>
     <p><%= link_to "Add new list", new_list_path, class: "btn btn-primary" %></p>
@@ -11,16 +9,21 @@
 
 <div class="d-flex flex-wrap gap-3 justify-content-center align-items-center m-4">
   <% @lists.each do |list| %>
-  <% unsplash_data = list.fetch_api %>
-    <div class="card-trip rounded-4">
-      <img src="<%= unsplash_data["urls"]["small"] %>">
-      <div class="card-trip-infos">
-        <div>
-          <h2><%= link_to list.name, list_path(list.id) %></h2>
+  <%# <% if list.photo.attached? %>
+    <%# <%= cl_image_tag list.photo.key, class: "card-img-top rounded-4" %>
+    <%# <% elsif @movie_lists[list.name] %>
+    <%= link_to list_path(list.id), class: "d-block" do %>
+      <div class="card-trip rounded-4">
+        <img src="<%= @movie_lists[list.name] %>">
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= list.name %></h2>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
+  <%# <% end %>
 </div>
 
 <p>All movies go here</p>
