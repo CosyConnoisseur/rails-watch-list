@@ -2,9 +2,9 @@ class ListsController < ApplicationController
   def index
     @lists = List.all
     @all_movies = Movie.all
-    @banner = Rails.cache.fetch("index_banner", expires_in: 1.hour) do
-      MovieApiService.fetch_banner
-    end
+    @banner = MovieApiService.fetch_banner # Rails.cache.fetch("index_banner", expires_in: 1.hour) do
+      # MovieApiService.try_banner
+    # end
     list_names = @lists.map { |list| list.name }
 
     # 3. Create a hash to hold your movies per genre list

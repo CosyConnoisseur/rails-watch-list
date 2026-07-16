@@ -1,5 +1,5 @@
 
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= @banner %>');">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= asset_path(@banner) %>');">
   <div class="container d-flex flex-column align-items-center justify-content-center">
     <h1>Your Movie Collections</h1>
     <p><%= link_to "Add new list", new_list_path, class: "btn btn-primary" %></p>
