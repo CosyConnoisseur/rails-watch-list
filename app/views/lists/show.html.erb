@@ -10,7 +10,7 @@
 <div class="d-flex flex-wrap gap-3 justify-content-center align-items-center m-4">
   <% @list.bookmarks.each do |bookmark| %>
   <% movie_data = bookmark.movie.fetch_api %>
-    <div class="card-trip rounded-3 ">
+    <div class="movie-card card-trip rounded-3 ">
       <% p movie_data %>
       <img src=<%= movie_data["Poster"]  %>>
       <div class="card-trip-infos">

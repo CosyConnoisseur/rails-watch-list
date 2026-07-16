@@ -3,12 +3,12 @@ class MovieApiService
     url = "https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=movies"
     response = Faraday.get(url)
     data = JSON.parse(response.body)
-    data["urls"]["regular"]
+    data["urls"]["regular"] || "assets/images/fallback.jpg"
   end
 
   def self.fetch_list(genre)
     response = Faraday.get("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=#{genre}")
     data = JSON.parse(response.body)
-    data["urls"]["small"]
+    data["urls"]["small"] || "assets/images/fallback.jpg"
   end
 end

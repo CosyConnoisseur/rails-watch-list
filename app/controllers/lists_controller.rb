@@ -5,17 +5,17 @@ class ListsController < ApplicationController
     @banner = Rails.cache.fetch("index_banner", expires_in: 1.hour) do
       MovieApiService.fetch_banner
     end
-  list_names = @lists.map { |list| list.name }
+    list_names = @lists.map { |list| list.name }
 
-  # 3. Create a hash to hold your movies per genre list
-  @movie_lists = {}
-  list_names.each do |genre|
-    # Cleans up the string for safe cache keys (e.g., "Sci-Fi" becomes "sci_fi")
-    cache_key = "#{genre.downcase.parameterize}_list"
+    # 3. Create a hash to hold your movies per genre list
+    @movie_lists = {}
+    list_names.each do |genre|
+      # Cleans up the string for safe cache keys (e.g., "Sci-Fi" becomes "sci_fi")
+      cache_key = "#{genre.downcase.parameterize}_list"
 
-    @movie_lists[genre] = Rails.cache.fetch(cache_key, expires_in: 1.hour) do
-      MovieApiService.fetch_list(genre.downcase)
-      end
+      @movie_lists[genre] = Rails.cache.fetch(cache_key, expires_in: 1.hour) do
+        MovieApiService.fetch_list(genre.downcase)
+        end
     end
   end
 

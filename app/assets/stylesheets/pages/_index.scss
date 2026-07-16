@@ -34,6 +34,10 @@
   object-fit: cover;
 }
 
+.movie-card > img {
+  object-fit:scale-down;
+}
+
 .card-trip h2 {
   font-size: 16px;
   font-weight: bold;
