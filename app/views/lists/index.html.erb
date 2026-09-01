@@ -1,8 +1,8 @@
 
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= asset_path(@banner) %>');">
   <div class="container d-flex flex-column align-items-center justify-content-center">
-    <h1>Your Movie Collections</h1>
-    <p><%= link_to "Add new list", new_list_path, class: "btn btn-primary" %></p>
+    <h1>Must Watch Movie Collections</h1>
+    <p><%= link_to "Add your list", new_list_path, class: "btn btn-primary mt-3" %></p>
   </div>
 </div>
 
@@ -26,9 +26,9 @@
   <%# <% end %>
 </div>
 
-<p>All movies go here</p>
-<ul>
+<p class="text-center">Currently available movies:</p>
+<ul class="list-unstyled text-center">
   <% @all_movies.each do |movie| %>
-  <li><%= link_to movie.title %></li>
+  <li><%= movie.title %></li>
   <% end %>
 </ul>

@@ -1,6 +1,10 @@
-<h1>Lists new</h1>
-<p>create a new list with form</p>
+<div class="container">
+<h1>Create a new list</h1>
+<p>Give it a name!</p>
 <%= simple_form_for @list do |f| %>
   <%= f.input :name %>
-  <%= f.button :submit %>
+  <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
+
+<p><%= link_to "Return to home", lists_path, class: "btn btn-dark mt-3" %></p>
+</div>

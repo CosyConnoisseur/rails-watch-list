@@ -21,13 +21,15 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
-    if session[:cached_list_image].blank?
+    cache_key = "list_image_#{@list.id}"
+
+    @list_image = Rails.cache.fetch(cache_key, expires_in: 1.hour) do
       url = "https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=#{@list.name}"
       response = Faraday.get(url)
       data = JSON.parse(response.body)
-      session[:cached_list_image] = data["urls"]["regular"]
+      session[:cached_list_image][@list.id.to_s] = data["urls"]["regular"]
     end
-    @list_image = session[:cached_list_image] || []
+    @list_image || "fallback.jpg"
   end
 
   def new

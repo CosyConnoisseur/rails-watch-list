@@ -1,4 +1,5 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+<% @list_image %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @list_image %>);">
   <div class="container">
     <h1><%= @list.name %></h1>
     <p><%= link_to "Add movie to this list", new_list_bookmark_path(@list), class: "btn btn-primary" %></p>
@@ -24,7 +25,9 @@
   <% end %>
 </div>
 
-<p>what a nice list</p>
-<p><%= link_to "Add movie to this list", new_list_bookmark_path(@list) %></p>
+<div class="text-center">
+<p>Is this list missing something?</p>
+<p><%= link_to "Add movie to this list", new_list_bookmark_path(@list), class: "btn btn-primary" %></p>
 
-<p><%= link_to "Return to lists", lists_path %></p>
+<p><%= link_to "Return to lists", lists_path, class: "btn btn-secondary" %></p>
+</div>
